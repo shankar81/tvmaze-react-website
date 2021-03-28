@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 0.3rem;
+  border: 1px solid #aaa;
+  box-shadow: 0 0 3px 0 transparent;
+  transition: all 0.3s;
+
+  &:focus {
+    outline: rgba(229, 9, 20, 0.5);
+    border: 1px solid rgba(229, 9, 20, 0.5);
+    box-shadow: 0 0 1rem 0 rgba(229, 9, 20, 0.5);
+  }
+
+  &:hover {
+    box-shadow: 0 0 1rem 0 rgba(229, 9, 20, 0.5);
+  }
+}

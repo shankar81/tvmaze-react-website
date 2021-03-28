@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import GlobalContext from "./context/GlobalContext";
+import Home from "./layout/Home/Home";
+import ShowDetail from "./layout/ShowDetail/ShowDetail";
 
 function App() {
+  const [isDarkMode, setDarkMode] = useState<boolean>(false);
+
+  function onChangeTheme() {
+    setDarkMode((mode) => !mode);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalContext.Provider value={{ changeTheme: onChangeTheme, isDarkMode }}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/show/:id" component={ShowDetail} />
+        </Switch>
+      </Router>
+    </GlobalContext.Provider>
   );
 }
 
